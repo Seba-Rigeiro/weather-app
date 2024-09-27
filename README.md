@@ -15,3 +15,5 @@
    npm start
    ```
    Access the application at http://localhost:3000/.
+
+You can also view the deployed application at: https://vercel.com/seba-rigeiros-projects/weather-app
