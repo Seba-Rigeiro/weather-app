@@ -17,11 +17,11 @@ export const useWeather = (selectedCity: City | null): UseWeatherReturn => {
   const { lat, lon } = selectedCity || {};
 
   const weatherUrl = selectedCity
-    ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
     : null;
 
   const forecastUrl = selectedCity
-    ? `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    ? `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
     : null;
 
   const {

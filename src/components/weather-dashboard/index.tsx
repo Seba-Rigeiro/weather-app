@@ -46,17 +46,20 @@ export const WeatherDashboard = () => {
       </SectionContainer>
       {weatherData && (
         <SectionContainer darkMode={darkMode}>
-          <Typography variant="h5">
-            Pronóstico actual -
-            <Typography variant="body1">{weatherData.name}</Typography>
+          <Typography variant="h5" mb={2}>
+            <span style={{ fontWeight: "bold" }}>Pronóstico actual - </span>
+            {weatherData.name}
           </Typography>
           <CurrentWeather weatherData={weatherData} />
         </SectionContainer>
       )}
       {forecastData && (
         <SectionContainer darkMode={darkMode}>
-          <Typography variant="h5">
-            Pronóstico para 5 días {weatherData?.name}
+          <Typography variant="h5" mb={2}>
+            <span style={{ fontWeight: "bold" }}>
+              Pronóstico para 5 días -{" "}
+            </span>
+            {weatherData?.name}
           </Typography>
           <Forecast forecastData={forecastData} />
         </SectionContainer>

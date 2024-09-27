@@ -1,16 +1,24 @@
+interface Weather {
+  description: string;
+  icon: string;
+}
+
+interface Main {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  humidity: number;
+  pressure: number;
+}
+
+interface Sys {
+  country: string;
+}
+
 export interface WeatherData {
-  weather: {
-    description: string;
-    icon: string;
-  }[];
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-  };
+  weather: Weather[];
+  main: Main;
   name: string;
-  sys: {
-    country: string;
-  };
+  sys: Sys;
 }

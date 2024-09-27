@@ -11,7 +11,7 @@ export const Forecast: FC<ForecastProps> = ({ forecastData }) => {
   const forecastDays: ForecastDay[] = calculateForecastDays(forecastData.list);
 
   return (
-    <Grid container spacing={2} mt={2}>
+    <Grid container spacing={2}>
       {forecastDays.map((day: ForecastDay, index: number) => {
         const iconUrl = `https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`;
 
@@ -26,8 +26,8 @@ export const Forecast: FC<ForecastProps> = ({ forecastData }) => {
                 </Typography>
                 <Box display="flex" alignItems="center">
                   <Typography variant="body2" style={{ marginRight: "1rem" }}>
-                    Max: {Math.round(day.temp_max)}°C | Min:
-                    {Math.round(day.temp_min)}°C
+                    Min: {Math.round(day.temp_min)}°C | Max:
+                    {Math.round(day.temp_max)}°C
                   </Typography>
                   <img src={iconUrl} alt={day.weather.description} />
                 </Box>
