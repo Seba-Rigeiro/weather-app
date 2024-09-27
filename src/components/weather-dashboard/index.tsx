@@ -9,6 +9,7 @@ import { CitySearch } from "./CitySearch";
 import styled from "@emotion/styled";
 import { City } from "../../entities/city";
 import { useTheme } from "../../context/ThemeContext";
+import { EmptyState } from "../common/EmptyState";
 
 const SectionContainer = styled(Box)<{ darkMode: boolean }>`
   margin: 24px;
@@ -19,7 +20,8 @@ const SectionContainer = styled(Box)<{ darkMode: boolean }>`
 export const WeatherDashboard = () => {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
-  const { weatherData, forecastData, isLoading } = useWeather(selectedCity);
+  const { weatherData, forecastData, isLoading, error } =
+    useWeather(selectedCity);
   const { darkMode } = useTheme();
 
   const handleCitySelect = (value: City | null) => {
@@ -44,6 +46,19 @@ export const WeatherDashboard = () => {
       <SectionContainer darkMode={darkMode}>
         <CitySearch onCitySelect={handleCitySelect} />
       </SectionContainer>
+
+      {((!weatherData && !forecastData) || error) && (
+        <SectionContainer darkMode={darkMode}>
+          <EmptyState
+            title={error ? "Hubo un error" : "No hay datos"}
+            description={
+              error
+                ? "Por favor, intenta nuevamente"
+                : "Por favor, selecciona una ciudad"
+            }
+          />
+        </SectionContainer>
+      )}
       {weatherData && (
         <SectionContainer darkMode={darkMode}>
           <Typography variant="h5" mb={2}>
